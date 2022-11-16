@@ -8,13 +8,13 @@
 </head>
 <body>
 
-<h1>Fagner Viana</h1>
-
-
-<%
- out.print("Seu sucesso garantido");
+<% 
+   String nome = request.getParameter("nome");
+   out.println(nome);
+   
+   String idade = request.getParameter("idade");
+   out.println(idade);
 %>
-
 
 </body>
 </html>
