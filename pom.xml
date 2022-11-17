@@ -6,6 +6,13 @@
   <packaging>war</packaging>
   <name>curso-jsp</name>
   <description>curso jsp jdev treinamento</description>
+  
+  <dependencies>
+  
+  <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+ 
+  </dependencies>
+  
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
