@@ -4,26 +4,39 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Curso JSP</title>
 </head>
 <body>
 
-<h1>Fagner Viana</h1>
+<h1>Seja bem vindo ao nosso sistema</h1>
 
+<form action="ServletLogin" method="post">
 
-<%
- out.print("Seu sucesso garantido");
-%>
-
-
-  <form action="ServletLogin" method="post">
-
-  <input name="nome">
-  <input name ="idade"> 
+<table>
+  <tr>
+  <td><label>Login</label></td>
+  <td><input name="Login" type="text">
+  </td>
+  </tr>
   
+  <tr>
+   
+     <td><label>Senha</label></td>
+   <td>
+    <input name ="Senha" type="password">
+   </td> 
+ </tr>
+ 
+ <tr>
+ <td>
   <input type="submit" value="Enviar">
-  
-  </form>
+ </td>
+ </tr>
+
+</table> 
+ 
+  <h4>${msg}</h4>
+</form>
 
 
 </body>
