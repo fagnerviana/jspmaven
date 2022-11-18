@@ -15,7 +15,7 @@
 <table>
   <tr>
   <td><label>Login</label></td>
-  <td><input name="Login" type="text">
+  <td><input name="login" type="text">
   </td>
   </tr>
   
@@ -23,7 +23,7 @@
    
      <td><label>Senha</label></td>
    <td>
-    <input name ="Senha" type="password">
+    <input name ="senha" type="password">
    </td> 
  </tr>
  
@@ -35,9 +35,9 @@
 
 </table> 
  
-  <h4>${msg}</h4>
+  
 </form>
-
+<h4>${msg}</h4>
 
 </body>
 </html>

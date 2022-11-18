@@ -41,6 +41,7 @@ public class ServletLogin extends HttpServlet {
 		 String login = request.getParameter("login");
 		 String senha = request.getParameter("senha");
 		 
+		 //Verificar se a senha e login é nulo 
 		 if(login!=null && !login.isEmpty() && senha!= null && !senha.isEmpty()) {
 			 
 
@@ -48,12 +49,30 @@ public class ServletLogin extends HttpServlet {
 			 loginModel.setLogin(login);
 			 loginModel.setSenha(senha);
 			 
+			 //Simula o login
+			 if(loginModel.getLogin().equalsIgnoreCase("admin") 
+					 && loginModel.getSenha().equalsIgnoreCase("admin")) {
+				 
+				 request.getSession().setAttribute("usuario", loginModel.getLogin());
+				 RequestDispatcher redirecionar = request.getRequestDispatcher("principal/principal.jsp");
+				 //Aqui ele vai redirecionar para o index
+				 redirecionar.forward(request, response);
+				 
+			 }else {
+				//Aqui ele vai redirecionar para a pagina desejada 
+				 RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
+				 //Vai apresentar a MSG 
+				 request.setAttribute("msg", "Favor informar o login e senha do admin corretamente!");
+				 //Aqui ele vai redirecionar para o index
+				 redirecionar.forward(request, response);
+			 }
+			 
 			 
 		 }else {
 			 //Aqui ele vai redirecionar para a pagina desejada 
 			 RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
 			 //Vai apresentar a MSG 
-			 request.setAttribute("msg", "Informe o login e senha corretamente!");
+			 request.setAttribute("msg", "Senha e login não podem está em branco");
 			 //Aqui ele vai redirecionar para o index
 			 redirecionar.forward(request, response);
 		 }
