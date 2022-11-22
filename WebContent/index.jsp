@@ -8,9 +8,11 @@
 </head>
 <body>
 
-<h1>Seja bem vindo ao nosso sistema</h1>
+<h1>Seja bem vindo ao nosso sistema JSP</h1>
 
 <form action="ServletLogin" method="post">
+<input type="hidden" value= "<%= request.getParameter("url")%>" name="url">
+
 
 <table>
   <tr>
@@ -34,8 +36,6 @@
  </tr>
 
 </table> 
- 
-  
 </form>
 <h4>${msg}</h4>
 

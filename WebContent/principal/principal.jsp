@@ -8,7 +8,8 @@
 </head>
 <body>
 
-<h1>Seja bem vindo ao sistema</h1>
+<h1>Seja bem vindo ao sistema JSP</h1>
+<h1>Você esta logado</h1>
 
 </body>
 </html>
