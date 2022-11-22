@@ -46,7 +46,7 @@ public class ServletLogin extends HttpServlet {
 			// Verificar se a senha e login é nulo
 			if (login != null && !login.isEmpty() && senha != null && !senha.isEmpty()) {
 
-				LoginModel loginModel = null;
+				LoginModel loginModel = new LoginModel();
 				loginModel.setLogin(login);
 				loginModel.setSenha(senha);
 
