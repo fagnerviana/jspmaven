@@ -23,3 +23,8 @@ WITH (
 );
 ALTER TABLE public.usuario
   OWNER TO postgres;
+
+  --Realizando insert na tabela ususario
+  
+  INSERT INTO usuario(login, senha) 
+VALUES ('admin','admin');

@@ -76,6 +76,13 @@ public class FilterAutenticacao implements Filter {
 	} catch (Exception e) {
 		e.printStackTrace();
 		
+		// Aqui ele vai redirecionar para a pagina desejada
+		RequestDispatcher redirecionar = request.getRequestDispatcher("erro.jsp");
+		// Vai apresentar a MSG
+		request.setAttribute("msg", e.getStackTrace());
+		// Aqui ele vai redirecionar para o index
+		redirecionar.forward(request, response);
+		
 		try {
 			connection.rollback();
 					
