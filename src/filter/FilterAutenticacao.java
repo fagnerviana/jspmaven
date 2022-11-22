@@ -1,6 +1,10 @@
 package filter;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import connection.SingleConnection;
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.FilterConfig;
@@ -18,6 +22,8 @@ import jakarta.servlet.http.HttpSession;
  */
 @WebFilter(urlPatterns= {"/principal/*"})  /*Intercepta todas as requisições que vierem do projeto ou mapeamento*/
 public class FilterAutenticacao implements Filter {
+	
+	private static Connection connection;
 
     public FilterAutenticacao() {
         
@@ -26,6 +32,11 @@ public class FilterAutenticacao implements Filter {
     /*Encerra os processos quando o servidor é parado */
     /*Mataria os processos de conexão com banco*/
 	public void destroy() {
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	
 	}
 	
@@ -34,8 +45,11 @@ public class FilterAutenticacao implements Filter {
 	/*Validação de autenticação*/
 	/*Dar commit e rolback de transações do banco*/
 	/*Validar e fazer redirecionamento de paginas*/
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) 
+			throws IOException, ServletException {
 		
+		try {
+				
 		//Sessão
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
@@ -56,14 +70,29 @@ public class FilterAutenticacao implements Filter {
 		}else {
 			chain.doFilter(request, response);
 		}
+		connection.commit(); //dando tudo certo comita as alterações no banco de dados
 		
+	
+	} catch (Exception e) {
+		e.printStackTrace();
+		
+		try {
+			connection.rollback();
+					
+		} catch (Exception e2) {
+			e.printStackTrace();
+		}
+		
+	   }
 		
 	}
 	
 	/*Inicia os processos ou recursos quando o servidor sobe o projeto*/
 	/*iniciar a conexão com o banco*/
 	public void init(FilterConfig fConfig) throws ServletException {
-		
+		connection = SingleConnection.getConnection();
 	}
+	
+	
 
 }
