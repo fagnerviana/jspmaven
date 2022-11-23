@@ -1,15 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<html lang="en">
 
-<h1>Seja bem vindo ao sistema JSP</h1>
-<h1>Você esta logado</h1>
+<jsp:include page="head.jsp"></jsp:include>
+  <body>
+  <!-- Pre-loader start -->
+  <jsp:include page="theme-loader.jsp"></jsp:include>
+  
+  <!-- Pre-loader end -->
+  <div id="pcoded" class="pcoded">
+      <div class="pcoded-overlay-box"></div>
+      <div class="pcoded-container navbar-wrapper">
+      
+      <jsp:include page="navbar.jsp"></jsp:include>
 
+          <div class="pcoded-main-container">
+              <div class="pcoded-wrapper">
+                  <jsp:include page="navbarmenu.jsp"></jsp:include>
+                  <div class="pcoded-content">
+                      <!-- Page-header start -->
+                      <jsp:include page="page-header.jsp"></jsp:include>
+                      
+                      <!-- Page-header end -->
+                        
+                        <h1>Aqui ainda em construção</h1>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+ <jsp:include page="javascriptfile.jsp"></jsp:include>
+    
 </body>
+
 </html>
